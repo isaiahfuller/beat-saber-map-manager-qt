@@ -2,7 +2,7 @@ import datetime
 import json
 import requests
 import urllib.parse
-from bsqt.utils.beatsaver.enums import Sort
+from bsqt.utils.beatsaver.enums import BeatSaverLatestSort
 
 base_url: str = "https://api.beatsaver.com"
 
@@ -107,7 +107,7 @@ def get_latest_maps(
         if before is not None:
             url += urllib.parse.quote(f"&before={urllib.parse.quote(before)}")
         url += f"&pageSize={page_size}"
-        url += f"&sort={Sort(sort).name}"
+        url += f"&sort={BeatSaverLatestSort(sort).name}"
         if verified is not None:
             if verified is True:
                 url += "&verified=true"

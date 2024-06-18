@@ -54,25 +54,20 @@
                <item>
                 <widget class="QDateTimeEdit" name="latest_after_edit">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
                 </widget>
                </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QFrame" name="latest_before_frame">
-              <property name="frameShape">
-               <enum>QFrame::Shape::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Shadow::Raised</enum>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="Line" name="line">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                </widget>
+               </item>
                <item>
                 <widget class="QLabel" name="latest_before_label">
                  <property name="text">
@@ -81,9 +76,9 @@
                 </widget>
                </item>
                <item>
-                <widget class="QDateTimeEdit" name="latest_date_edit">
+                <widget class="QDateTimeEdit" name="latest_before_edit">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -176,58 +171,75 @@
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="latest_sort_frame">
-            <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_7">
-             <item>
-              <widget class="QLabel" name="latest_sort_label">
-               <property name="text">
-                <string>Sort</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="latest_sort_cbox">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QFrame" name="latest_sort_frame">
+              <property name="frameShape">
+               <enum>QFrame::Shape::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Shadow::Raised</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
                <item>
-                <property name="text">
-                 <string>First Published</string>
-                </property>
+                <widget class="QLabel" name="latest_sort_label">
+                 <property name="text">
+                  <string>Sort</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <property name="text">
-                 <string>Updated</string>
-                </property>
+                <widget class="QComboBox" name="latest_sort_cbox">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>First Published</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Updated</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Last Published</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Created</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Curated</string>
+                  </property>
+                 </item>
+                </widget>
                </item>
-               <item>
-                <property name="text">
-                 <string>Last Published</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Created</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Curated</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-            </layout>
-           </widget>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="latest_search_button">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Search</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -244,7 +256,7 @@
            <x>0</x>
            <y>0</y>
            <width>513</width>
-           <height>385</height>
+           <height>383</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
