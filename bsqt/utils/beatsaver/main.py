@@ -2,7 +2,7 @@ import datetime
 import json
 import requests
 import urllib.parse
-from utils.beatsaver.enums import Sort
+from bsqt.utils.beatsaver.enums import Sort
 
 base_url: str = "https://api.beatsaver.com"
 

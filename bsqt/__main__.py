@@ -1,8 +1,8 @@
 import sys
 from PySide6 import QtWidgets
-from model.model import Model
-from controllers.maincontroller import MainController
-from views.mainwindow import MainView
+from bsqt.model.model import Model
+from bsqt.controllers.maincontroller import MainController
+from bsqt.views.mainwindow import MainView
 
 
 class App(QtWidgets.QApplication):
