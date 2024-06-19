@@ -2,8 +2,8 @@ from enum import Enum
 
 
 class BeatSaverLatestSort(Enum):
-    FIRST_PUBLISHED = 1
-    UPDATED = 2
-    LAST_PUBLISHED = 3
-    CREATED = 4
-    CURATED = 5
+    FIRST_PUBLISHED = 0
+    UPDATED = 1
+    LAST_PUBLISHED = 2
+    CREATED = 3
+    CURATED = 4

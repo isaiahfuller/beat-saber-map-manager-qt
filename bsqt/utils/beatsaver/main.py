@@ -120,7 +120,7 @@ def get_latest_maps(
         return None
     print(req)
     map_info = json.loads(req.content)
-    return map_info
+    return map_info["docs"]
 
 
 def get_maps_by_plays(page):

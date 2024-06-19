@@ -17,8 +17,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
     QFrame, QGridLayout, QGroupBox, QHBoxLayout,
-    QLabel, QMainWindow, QPushButton, QRadioButton,
-    QScrollArea, QSizePolicy, QStatusBar, QTabWidget,
+    QHeaderView, QLabel, QMainWindow, QPushButton,
+    QRadioButton, QScrollArea, QSizePolicy, QSpinBox,
+    QStatusBar, QTabWidget, QTreeWidget, QTreeWidgetItem,
     QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
@@ -175,13 +176,40 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.latest_sort_frame)
 
-        self.latest_search_button = QPushButton(self.latest)
-        self.latest_search_button.setObjectName(u"latest_search_button")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.frame = QFrame(self.latest)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.frame)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.latest_page_size_label = QLabel(self.frame)
+        self.latest_page_size_label.setObjectName(u"latest_page_size_label")
+
+        self.horizontalLayout_2.addWidget(self.latest_page_size_label)
+
+        self.latest_page_size = QSpinBox(self.frame)
+        self.latest_page_size.setObjectName(u"latest_page_size")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         sizePolicy4.setHorizontalStretch(0)
         sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.latest_search_button.sizePolicy().hasHeightForWidth())
-        self.latest_search_button.setSizePolicy(sizePolicy4)
+        sizePolicy4.setHeightForWidth(self.latest_page_size.sizePolicy().hasHeightForWidth())
+        self.latest_page_size.setSizePolicy(sizePolicy4)
+        self.latest_page_size.setMinimum(1)
+        self.latest_page_size.setMaximum(100)
+        self.latest_page_size.setValue(20)
+
+        self.horizontalLayout_2.addWidget(self.latest_page_size)
+
+
+        self.horizontalLayout_8.addWidget(self.frame)
+
+        self.latest_search_button = QPushButton(self.latest)
+        self.latest_search_button.setObjectName(u"latest_search_button")
+        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.latest_search_button.sizePolicy().hasHeightForWidth())
+        self.latest_search_button.setSizePolicy(sizePolicy5)
 
         self.horizontalLayout_8.addWidget(self.latest_search_button)
 
@@ -200,54 +228,13 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 513, 383))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.frame_4 = QFrame(self.scrollAreaWidgetContents)
-        self.frame_4.setObjectName(u"frame_4")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
-        self.frame_4.setSizePolicy(sizePolicy5)
-        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_5 = QHBoxLayout(self.frame_4)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.map_art_label = QLabel(self.frame_4)
-        self.map_art_label.setObjectName(u"map_art_label")
+        self.map_tree = QTreeWidget(self.scrollAreaWidgetContents)
+        self.map_tree.setObjectName(u"map_tree")
+        self.map_tree.setHeaderHidden(False)
+        self.map_tree.header().setVisible(True)
+        self.map_tree.header().setStretchLastSection(True)
 
-        self.horizontalLayout_5.addWidget(self.map_art_label)
-
-        self.verticalLayout_4 = QVBoxLayout()
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.map_title_label = QLabel(self.frame_4)
-        self.map_title_label.setObjectName(u"map_title_label")
-
-        self.verticalLayout_4.addWidget(self.map_title_label)
-
-        self.map_mapper_label = QLabel(self.frame_4)
-        self.map_mapper_label.setObjectName(u"map_mapper_label")
-
-        self.verticalLayout_4.addWidget(self.map_mapper_label)
-
-
-        self.horizontalLayout_5.addLayout(self.verticalLayout_4)
-
-        self.verticalLayout_5 = QVBoxLayout()
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.label_6 = QLabel(self.frame_4)
-        self.label_6.setObjectName(u"label_6")
-
-        self.verticalLayout_5.addWidget(self.label_6)
-
-        self.label_7 = QLabel(self.frame_4)
-        self.label_7.setObjectName(u"label_7")
-
-        self.verticalLayout_5.addWidget(self.label_7)
-
-
-        self.horizontalLayout_5.addLayout(self.verticalLayout_5)
-
-
-        self.verticalLayout_2.addWidget(self.frame_4)
+        self.verticalLayout_2.addWidget(self.map_tree)
 
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
@@ -285,12 +272,12 @@ class Ui_MainWindow(object):
         self.latest_sort_cbox.setItemText(3, QCoreApplication.translate("MainWindow", u"Created", None))
         self.latest_sort_cbox.setItemText(4, QCoreApplication.translate("MainWindow", u"Curated", None))
 
+        self.latest_page_size_label.setText(QCoreApplication.translate("MainWindow", u"Page Size", None))
         self.latest_search_button.setText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.list_types.setTabText(self.list_types.indexOf(self.latest), QCoreApplication.translate("MainWindow", u"Latest", None))
-        self.map_art_label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.map_title_label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.map_mapper_label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        ___qtreewidgetitem = self.map_tree.headerItem()
+        ___qtreewidgetitem.setText(2, QCoreApplication.translate("MainWindow", u"Date", None));
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainWindow", u"Mapper", None));
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"Name", None));
     # retranslateUi
 

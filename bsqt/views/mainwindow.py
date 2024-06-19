@@ -42,3 +42,7 @@ class MainView(QMainWindow):
         self._ui.latest_sort_cbox.currentIndexChanged.connect(
             self._main_controller.latest_sort_cbox
         )
+
+        self._ui.latest_page_size.valueChanged.connect(
+            self._main_controller.latest_page_size_spin
+        )

@@ -8,6 +8,7 @@ class Model(QObject):
     latest_verified_changed = Signal(int)
     latest_search_button_changed = Signal(bool)
     latest_sort_changed = Signal(str)
+    latest_page_size_changed = Signal(int)
 
     @property
     def latest_after(self):
@@ -63,10 +64,30 @@ class Model(QObject):
         self._latest_sort = value
         self.latest_sort_changed.emit(value)
 
+    @property
+    def latest_page_size(self):
+        return self._latest_page_size
+
+    @latest_page_size.setter
+    def latest_page_size(self, value):
+        self._latest_page_size = value
+        self.latest_page_size_changed.emit(value)
+
     def __init__(self):
         super().__init__()
-        self._latest_after = QDateTime.currentDateTime().addDays(-7)
-        self._latest_before = QDateTime.currentDateTime()
+        self._latest_after = (
+            QDateTime.currentDateTime()
+            .addDays(-7)
+            .toUTC()
+            .toPython()
+            .strftime("%Y-%m-%dT%H:%M:%S")
+            + "+00:00"
+        )
+        self._latest_before = (
+            QDateTime.currentDateTime().toUTC().toPython().strftime("%Y-%m-%dT%H:%M:%S")
+            + "+00:00"
+        )
         self._latest_automapper = False
+        self._latest_page_size = 20
         self._latest_sort = 0
         self._latest_verified = None
